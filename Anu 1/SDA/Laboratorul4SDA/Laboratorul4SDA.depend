@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1649828886 source:c:\users\lenovo\desktop\laboratorul4sda\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1649829371 source:c:\users\lenovo\desktop\sda\laboratorul4sda\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

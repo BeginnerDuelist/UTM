@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1649589473 source:c:\users\lenovo\desktop\laborator3sda\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1653988897 source:c:\users\lenovo\desktop\sda\laborator3sda\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+

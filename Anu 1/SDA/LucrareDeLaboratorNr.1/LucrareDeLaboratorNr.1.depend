@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1644142767 source:c:\users\lenovo\desktop\programe c si c++\lucraredelaboratornr.1\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1644928965 source:c:\users\lenovo\desktop\programe c si c++\sda\lucraredelaboratornr.1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
