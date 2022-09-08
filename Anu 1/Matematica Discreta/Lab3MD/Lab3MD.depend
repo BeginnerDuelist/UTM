@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1649348952 source:c:\users\lenovo\desktop\lab3md\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1650100749 source:c:\users\lenovo\desktop\matematica discreta\lab3md\main.c
+	<stdio.h>
+	<stdlib.h>
+
