@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1636405181 source:c:\users\lenovo\desktop\programe c si c++\lucrare de laborator nr.5\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

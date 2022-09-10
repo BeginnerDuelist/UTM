@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1634757412 source:c:\users\lenovo\desktop\programe c si c++\lucrare de lab.4\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1637097469 source:c:\users\lenovo\desktop\programe c si c++\lucrare de laborator nr 4\lucrare de lab.4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
