@@ -1,0 +1,41 @@
+from turtle import *
+pencolor('black')
+shape('turtle')
+def curba():
+    for i in range(200): 
+        right(1)
+        forward(1)
+        speed(5)
+
+def inima(): 
+    left(140)
+    forward(113)
+    curba() 
+    left(120)
+    curba()
+    forward(112)
+def inima1(): 
+    left(160)
+    forward(140)
+    curba() 
+    left(140)
+    curba()
+    forward(135)
+
+inima()
+penup()
+goto(-25,30)
+pendown()
+left(45)
+inima()
+penup()
+goto(0,-20)
+pendown()
+left(55)
+inima()
+penup()
+goto(20,25)
+pendown()
+left(50)
+inima()
+mainloop()
