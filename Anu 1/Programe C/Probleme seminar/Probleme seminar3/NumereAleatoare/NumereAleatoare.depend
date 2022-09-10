@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1641219406 source:c:\users\lenovo\desktop\programe c si c++\probleme seminar\numerealeatoare\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1642026931 source:c:\users\lenovo\desktop\programe c si c++\probleme seminar\probleme seminar3\numerealeatoare\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

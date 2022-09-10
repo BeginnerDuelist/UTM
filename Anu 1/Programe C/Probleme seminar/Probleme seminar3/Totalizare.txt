@@ -1,0 +1,8 @@
+Probleme seminar (0-100) 49 probleme + 58 probleme suplimentare facute la laboratoarele 4 si 5. total 107 probleme.
+Probleme seminar (100-200) 50 probleme.
+Probleme seminar (200-250) 73 probleme.
+
+Numarul total de probleme 50+107+73=230 de probleme.
+Probleme seminar pentru atestare 1 au fost plaste in probleme seminar(100-200)
+Probleme seminar pentru atestare 2 au fost plaste in probleme seminar(0-100)
+Probleme seminar (200-250) au fost plasate unde trebuia.

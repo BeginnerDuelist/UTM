@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1637017809 source:c:\users\lenovo\desktop\programe c si c++\siruridecaracterenivela\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1637087594 source:c:\users\lenovo\desktop\programe c si c++\probleme seminar\probleme seminar2\siruridecaracterenivela\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1640545330 source:c:\users\lenovo\desktop\programe c si c++\exercitii fisiere\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1640890599 source:c:\users\lenovo\desktop\programe c si c++\probleme seminar\exercitii fisiere\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1642031224 source:c:\users\lenovo\desktop\programe c si c++\probleme seminar\probleme seminar3\exercitii fisiere\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
