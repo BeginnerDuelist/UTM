@@ -1,0 +1,11 @@
+from tkinter import *
+window=Tk()
+window.title('Steagul Palestina Buza Catalin TI-214')
+panza=Canvas(window,height=500,width=500)
+panza.pack()
+panza.create_rectangle(20,20,40,380,fill='brown',outline='black')
+panza.create_rectangle(40,20,330,90,fill='black')
+panza.create_rectangle(40,90,330,160,fill='white')
+panza.create_rectangle(40,160,330,230,fill='green')
+panza.create_polygon(40,20,145,125,40,230,fill='red3')
+window.mainloop()

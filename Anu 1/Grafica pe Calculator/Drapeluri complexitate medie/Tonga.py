@@ -1,0 +1,11 @@
+from tkinter import *
+window=Tk()
+window.title('Steagul Tonga Buza Catalin TI-214')
+panza=Canvas(window,height=500,width=500)
+panza.pack()
+panza.create_rectangle(20,20,40,380,fill='brown',outline='black')
+panza.create_rectangle(40,20,330,230,fill='red2',outline='black')
+panza.create_rectangle(40,20,160,140,fill='white',outline='black')
+panza.create_rectangle(90,40,110,120,fill='red',outline='red')
+panza.create_rectangle(60,70,140,90,fill='red',outline='red')
+window.mainloop()

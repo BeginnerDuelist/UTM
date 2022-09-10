@@ -1,0 +1,122 @@
+from turtle import*
+import turtle as t
+
+Screen().bgcolor("gray")
+
+speed(0)
+penup()
+goto(-200,100)
+pendown()
+
+color("#DA291C")
+begin_fill()
+forward(400)
+right(90)
+forward(200)
+right(90)
+forward(400)
+right(90)
+forward(200)
+end_fill()
+
+penup()
+goto(-200,100)
+setheading(0)
+pendown()
+
+color("white")
+begin_fill()
+forward(355)
+goto(-200, -66.6)
+goto(-200, 100)
+end_fill()
+
+penup()
+goto(-200,100)
+setheading(0)
+pendown()
+
+color("#001489")
+begin_fill()
+forward(350 - 2.22 * 5 - 4)
+goto(-200, -66.6 + 2.22 * 5)
+goto(-200, 100)
+end_fill()
+
+penup()
+goto(200,-100)
+setheading(180)
+pendown()
+
+color("white")
+begin_fill()
+forward(355)
+goto(200, 66.6)
+goto(200, -100)
+end_fill()
+
+penup()
+goto(200,-100)
+setheading(180)
+pendown()
+
+color("#009A44")
+begin_fill()
+forward(350 - 2.22 * 5 - 4)
+goto(200, 66.6 - 2.22 * 5)
+goto(200, -100)
+end_fill()
+
+penup()
+goto(-200 + 42 * 2.22,100 - 16 * 2.22)
+pendown()
+
+
+color("#FFC72C")
+begin_fill()
+for i in range(12):
+    forward(17)
+    right(110)
+    forward(17.5)
+    left(140)
+end_fill()
+
+penup()
+goto(-143, 77)
+pendown()
+
+color("#001489")
+begin_fill()
+circle(25)
+end_fill()
+
+penup()
+goto(-143, 72.5)
+pendown()
+
+color("#FFC72C")
+begin_fill()
+circle(20)
+end_fill()
+
+
+penup()
+setheading(0)
+left(180)
+color("brown")
+begin_fill()
+goto(-200,100)
+pendown()
+forward(30)
+left(90)
+forward(500)
+left(90)
+forward(30)
+left(90)
+forward(500)
+end_fill()
+penup()
+color("black")
+goto(0, -300)
+write("Namibia", font=("Arial", 48, "normal"))
+t.done()
