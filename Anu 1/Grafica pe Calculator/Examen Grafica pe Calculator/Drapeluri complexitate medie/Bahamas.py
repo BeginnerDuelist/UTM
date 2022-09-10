@@ -1,0 +1,11 @@
+from tkinter import *
+window=Tk()
+window.title("Steagul Bahamas Buza Catalin TI-214")
+panza=Canvas(window,width=500,height=500)
+panza.pack()
+panza.create_rectangle(20,20,40,380,fill='brown',outline='black')
+panza.create_rectangle(40,20,350,230,fill='yellow2',outline='black')
+panza.create_rectangle(40,20,350,90,fill='aquamarine4',outline='black')
+panza.create_rectangle(40,170,350,230,fill='aquamarine4',outline='black')
+panza.create_polygon(40,20,190,125,40,230,fill='black',outline='black')
+window.mainloop()

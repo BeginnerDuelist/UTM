@@ -1,0 +1,13 @@
+from tkinter import *
+window=Tk()
+window.title("Steagul Norvegia Buza Catalin TI-214")
+panza=Canvas(window,width=500,height=500)
+panza.pack()
+panza.create_rectangle(20,20,40,380,fill='brown')
+panza.create_rectangle(40,20,330,230,fill='red3',outline='black')
+panza.create_rectangle(140,20,180,230,fill='white',outline='white')
+panza.create_rectangle(40,110,330,150,fill='white',outline='white')
+panza.create_rectangle(150,20,170,230,fill='DarkBlue',outline='DarkBlue')
+panza.create_rectangle(40,120,330,140,fill='DarkBlue',outline='DarkBlue')
+panza.create_text(300,400,text='Steagul Norvegia TI-214 Buza Catalin',font=('Arial','10'))
+window.mainloop()

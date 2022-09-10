@@ -1,0 +1,12 @@
+from tkinter import *
+window=Tk()
+window.title("Steagul Islanda Buza Catalin TI-214")
+panza=Canvas(window,width=500,height=500)
+panza.pack()
+panza.create_rectangle(20,20,40,380,fill='brown')
+panza.create_rectangle(40,20,330,230,fill='DodgerBlue3')
+panza.create_rectangle(140,20,180,230,fill='white')
+panza.create_rectangle(40,110,330,150,fill='white')
+panza.create_rectangle(150,20,170,230,fill='red')
+panza.create_rectangle(40,120,330,140,fill='red')
+window.mainloop()
