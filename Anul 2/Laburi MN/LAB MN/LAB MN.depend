@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1663536265 source:c:\users\lenovo\desktop\lab mn\main.cpp
+	<iostream>
+	<math.h>
+
