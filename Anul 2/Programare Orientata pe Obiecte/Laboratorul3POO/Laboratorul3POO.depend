@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1665171787 source:c:\users\lenovo\desktop\laboratorul3poo\main.cpp
+	<iostream>
+
+1665670132 source:c:\users\lenovo\desktop\programare orientata pe obiecte\laboratorul3poo\main.cpp
+	<iostream>
+	<math.h>
+

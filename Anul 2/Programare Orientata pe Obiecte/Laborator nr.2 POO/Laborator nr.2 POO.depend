@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1663858556 source:c:\users\lenovo\desktop\laborator nr.2 poo\main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+

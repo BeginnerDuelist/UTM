@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1669913635 source:c:\users\lenovo\desktop\laboratorul6poo\main.cpp
+	<iostream>
+	<cstring>
+	<string>
+	<string.h>
+	<regex>
+	<fstream>
+	"Track.h"
+	"Album.h"
+	"Persoana.h"
+	"Artist.h"
+
+1669302201 source:c:\users\lenovo\desktop\laboratorul6poo\src\track.cpp
+	"Track.h"
+
+1669300163 c:\users\lenovo\desktop\laboratorul6poo\include\track.h
+	<cstring>
+	<iostream>
+
+1669912186 source:c:\users\lenovo\desktop\laboratorul6poo\src\album.cpp
+	"Album.h"
+	<regex>
+	<limits>
+
+1669912182 c:\users\lenovo\desktop\laboratorul6poo\include\album.h
+	<fstream>
+	<iostream>
+	<cstring>
+	"Track.h"
+
+1669300886 source:c:\users\lenovo\desktop\laboratorul6poo\src\persoana.cpp
+	"Persoana.h"
+
+1669300812 c:\users\lenovo\desktop\laboratorul6poo\include\persoana.h
+	<iostream>
+	<cstring>
+
+1669913712 source:c:\users\lenovo\desktop\laboratorul6poo\src\artist.cpp
+	"Artist.h"
+	<regex>
+	<limits>
+
+1669913624 c:\users\lenovo\desktop\laboratorul6poo\include\artist.h
+	<Persoana.h>
+	<iostream>
+	<cstring>
+	<Album.h>
+	<vector>
+

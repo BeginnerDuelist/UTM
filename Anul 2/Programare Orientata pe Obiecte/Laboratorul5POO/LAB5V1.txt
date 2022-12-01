@@ -1,0 +1,98 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+class Biblioteca
+{
+public:
+    void mesaj()
+    {
+        cout<<"Clasa Biblioteca"<<endl;
+    }
+};
+class Coperta:public Biblioteca
+{
+protected:
+    char denumire[50];
+    void get_name(char denumire[])
+    {
+        strcpy(this->denumire,denumire);
+    }
+public:
+    virtual void mesaj()
+    {
+        cout<<"Clasa Coperta"<<endl;
+    }
+
+};
+class Autor;public Biblioteca
+{
+protected:
+    char nume[20],prenume[20];
+    void get_autor(char nume[],char prenume[])
+    {
+        strcpy(this->nume,nume);
+        strcpy(this->prenume,prenume);
+    }
+    void afisare()
+    {
+        cout<<"Functia 2";
+    }
+};
+class NrCapitole:public Biblioteca
+{
+protected:
+    int nr_capitole;
+    void get_capitole(int nr_capitole)
+    {
+        this->nr_capitole=nr_capitole;
+    }
+    void afisare()
+    {
+        cout<<"Functia 3";
+    }
+};
+class FisaCarte:public Coperta,public Autor,public NrCapitole
+{
+    char editura[15],genul[25];
+    int numarul_de_paginii;
+    double pretul;
+public:
+    void initializare(char *denumire,char nume[],char prenume[],int nr_capitole,char editura[],char genul[],int numarul_de_paginii,double pretul)
+    {
+        get_name(denumire);
+        get_autor(nume,prenume);
+        get_capitole(nr_capitole);
+        strcpy(this->editura,editura);
+        strcpy(this->genul,genul);
+        this->numarul_de_paginii=numarul_de_paginii;
+        this->pretul=pretul;
+    }
+    void afisare()
+    {
+        cout<<"Denumirea carti: "<<denumire<<endl;
+        cout<<"Autorul: "<<nume<<" "<<prenume<<endl;
+        cout<<"Numarul de capitole: "<<nr_capitole<<endl;
+        cout<<"Editura: "<<editura<<endl;
+        cout<<"Genul : "<<genul<<endl;
+        cout<<"Numarul de paginii: "<<numarul_de_paginii<<endl;
+        cout<<"Pretul: "<<pretul<<endl;
+    }
+    void mesaj()
+    {
+        cout<<"Clasa FisaCarte"<<endl;
+    }
+
+};
+
+int main()
+{
+    Coperta *b[2];
+    b[0]=new Biblioteca;
+    b[1]=new FisaCarte;
+    for(int i=0;i<2;i++)
+    {
+        b[i]->mesaj();
+    }
+
+    return 0;
+}

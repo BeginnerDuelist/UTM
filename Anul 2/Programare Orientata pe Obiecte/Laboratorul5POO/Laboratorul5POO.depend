@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1667482178 source:c:\users\lenovo\desktop\laboratorul5poo\main.cpp
+	<iostream>
+	<cstring>
+	<time.h>
+
+1667985138 source:c:\users\lenovo\desktop\programare orientata pe obiecte\laboratorul5poo\main.cpp
+	<iostream>
+	<cstring>
+	<time.h>
+
