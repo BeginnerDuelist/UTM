@@ -1,0 +1,178 @@
+USE [master]
+GO
+IF DB_ID('AdapostAnimale') is NOT NULL
+    BEGIN 
+        ALTER DATABASE AdapostAnimale SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+        DROP DATABASE AdapostAnimale;
+    END
+GO
+CREATE DATABASE AdapostAnimale
+GO
+USE AdapostAnimale;
+
+CREATE TABLE "animale"(
+    "Id_Animal" INT NOT NULL,
+    "Tip_Animal" NCHAR(255) NOT NULL,
+    "Greutatea" FLOAT NOT NULL,
+    "Gen" NCHAR(255) NOT NULL,
+    "Data_Nasterii" DATE NOT NULL,
+    "Id_Donator" INT NOT NULL,
+    "Id_Adoptant" INT NOT NULL,
+    "Cod_Hrana" INT NOT NULL
+);
+ALTER TABLE
+    "animale" ADD CONSTRAINT "animale_id_animal_primary" PRIMARY KEY("Id_Animal");
+CREATE TABLE "Donatori"(
+    "Id_Donator" INT NOT NULL,
+    "IDNP_Donator" NCHAR(255) NOT NULL,
+    "Nume_Donator" NCHAR(255) NOT NULL,
+    "Prenume_Donator" NCHAR(255) NOT NULL,
+    "Adresa_Donator" NCHAR(255) NOT NULL,
+    "Email_Donator" NCHAR(255) NOT NULL,
+    "Telefon_Donator" NCHAR(255) NOT NULL
+);
+ALTER TABLE
+    "donatori" ADD CONSTRAINT "donatori_id_donator_primary" PRIMARY KEY("Id_Donator");
+CREATE TABLE "adoptanti"(
+    "Id_Adoptant" INT NOT NULL,
+    "IDNP_Adoptant" NCHAR(255) NOT NULL,
+    "Nume_Adoptant" NCHAR(255) NOT NULL,
+    "Prenume_Adoptant" NCHAR(255) NOT NULL,
+    "Adresa_Adoptant" NCHAR(255) NOT NULL,
+    "Email_Adoptant" NCHAR(255) NOT NULL,
+    "Telefon_Adoptant" NCHAR(255) NOT NULL
+);
+ALTER TABLE
+    "adoptanti" ADD CONSTRAINT "adoptatni_id_adoptant_primary" PRIMARY KEY("Id_Adoptant");
+CREATE TABLE "hrana"(
+    "Cod_Hrana" INT NOT NULL,
+    "Tip_Hrana" NCHAR(255) NOT NULL,
+    "Pret" INT NOT NULL,
+    "Brand" NCHAR(255) NOT NULL
+);
+ALTER TABLE
+    "hrana" ADD CONSTRAINT "hrana_cod_hrana_primary" PRIMARY KEY("Cod_Hrana");
+CREATE TABLE "veterinar"(
+    "Id_Veterinar" INT NOT NULL,
+    "IDNP_Veterinar" NCHAR(255) NOT NULL,
+    "Nume_Veterinar" NCHAR(255) NOT NULL,
+    "Prenume_Veterinar" NCHAR(255) NOT NULL,
+    "Adresa_Veterinar" NCHAR(255) NOT NULL,
+    "Email_Veterinar" NCHAR(255) NOT NULL,
+    "Telefon_Veterinar" NCHAR(255) NOT NULL
+);
+ALTER TABLE
+    "veterinar" ADD CONSTRAINT "veterinar_id_veterinar_primary" PRIMARY KEY("Id_Veterinar");
+CREATE TABLE "consultatii"(
+    "Id_Consultatii" INT NOT NULL,
+    "Data_Consultatii" DATE NOT NULL,
+    "Diagnostic" NCHAR(255) NOT NULL,
+    "Id_Animal" INT NOT NULL,
+    "Id_Veterniar" INT NOT NULL
+);
+ALTER TABLE
+    "consultatii" ADD CONSTRAINT "consultatii_id_consultatii_primary" PRIMARY KEY("Id_Consultatii");
+ALTER TABLE
+    "consultatii" ADD CONSTRAINT "consultatii_id_animal_foreign" FOREIGN KEY("Id_Animal") REFERENCES "animale"("Id_Animal");
+ALTER TABLE
+    "animale" ADD CONSTRAINT "animale_id_donator_foreign" FOREIGN KEY("Id_Donator") REFERENCES "donatori"("Id_Donator");
+ALTER TABLE
+    "animale" ADD CONSTRAINT "animale_id_adoptant_foreign" FOREIGN KEY("Id_Adoptant") REFERENCES "adoptanti"("Id_Adoptant");
+ALTER TABLE
+    "animale" ADD CONSTRAINT "animale_cod_hrana_foreign" FOREIGN KEY("Cod_Hrana") REFERENCES "hrana"("Cod_Hrana");
+ALTER TABLE
+    "consultatii" ADD CONSTRAINT "consultatii_id_veterniar_foreign" FOREIGN KEY("Id_Veterniar") REFERENCES "veterinar"("Id_Veterinar");
+
+INSERT INTO Donatori VALUES (1, '2783617995118', 'Stancu', 'Andrei', 'Strada Nicolae Bălcescu nr 35 Chisinau', 'andrei.stancu@gmail.com', '0721234128')
+INSERT INTO Donatori VALUES (2, '2937947492634', 'Grigore', 'Mihai', 'Strada Calea Moșilor nr 9 Chisinau', 'grigore.m@gmail.com', '0723456509')
+INSERT INTO Donatori VALUES (3, '2498163572531', 'Enache', 'Ana', 'Strada Valea Crucii nr 19 Chisinau', 'anaenache@yahoo.com', '0768675123')
+INSERT INTO Donatori VALUES (4, '2956183427757', 'Popa', 'Gabriel', 'Strada Ștefan Cel Mare nr 19 Orhei', 'gabrielpopa@yahoo.com', '0751876543')
+INSERT INTO Donatori VALUES (5, '2851734692894', 'Rus', 'Claudia', 'Strada Valea Podului nr 5 Chisinau', 'claurus@yahoo.com', '0754776683')
+INSERT INTO Donatori VALUES (6, '2518367294492', 'Ianc', 'Lavinia', 'Strada Mircea cel Batran nr 5 Cricova', 'laviniaianc@email.ru', '0754976682')
+INSERT INTO Donatori VALUES (7, '2385721946845', 'Enache', 'Andrei', 'Strada Ștefan-Vodă nr 19 Chisinau', 'enacheandrei@yahoo.com', '0768674123')
+INSERT INTO Donatori VALUES (8, '2237496518398', 'Ruben', 'Claudiu', 'Strada 31 August 1989 nr 5 Orhei', 'clauruben@yahoo.com', '0753556789')
+INSERT INTO Donatori VALUES (9, '2379618542117', 'Morariu', 'Teodora', 'Strada Valea Podului nr 51 Chisinau', 'teodora@email.ru', '0750786611')
+INSERT INTO Donatori VALUES (10, '2817325469173', 'Grigoras', 'Claudia', 'Strada Ion Creangă nr 5 Chisinau', 'claugrigoras@yahoo.com', '0750566666')
+INSERT INTO Donatori VALUES (11, '2579618243618', 'Enache', 'Remus', 'Strada 31 August 1989 nr 19 Orhei', 'remusenache@yahoo.com', '0768675001')
+INSERT INTO Donatori VALUES (12, '2173962845981', 'Ianc', 'Madalina', 'Strada Vasile Lupu nr 5 Orhei','madalina@email.ru', '0754770081')
+INSERT INTO Donatori VALUES (13, '2637928541219', 'Oprea', 'Mihai', 'Strada Ion Creangă nr 12 Cricova', 'oprea@gmail.com', '0767890100')
+INSERT INTO Donatori VALUES (14, '2658971432233', 'Neag', 'Ciprian', 'Strada Mircea cel Batran nr 15 Chisinau', 'neagc@gmail.com', '0765678901')
+INSERT INTO Donatori VALUES (15, '2876513249513', 'Abos', 'Roxana', 'Strada Dacia nr 3 Chisinau', 'abos_roxana@email.ru', '0765129063')
+
+
+INSERT INTO adoptanti VALUES (1, '2486732519945', 'Andritoiu', 'Catalin', NULL, 'acatalin@yahoo.com', '0723120986')
+INSERT INTO adoptanti VALUES (2, '2698743152927', 'Suman', 'Andreea', NULL, 'sumanandreea@email.ru', '0762098765')
+INSERT INTO adoptanti VALUES (3, '2986571432156', 'Stoica', 'Andrei', 'Strada Ciprian Porumbescu nr 43 Chisinau', 'stoicaandrei@yahoo.com','0765850999')
+INSERT INTO adoptanti VALUES (4, '2368294517966', 'Sandu', 'Cezara', 'Strada Dacia nr 7 Chisinau', 'cezarasandu@gmail.com', '0756239871')
+INSERT INTO adoptanti VALUES (5, '2987315264766', 'Dorobat', 'Alexandru', 'Strada Paris nr 38 Orhei', 'dorobat@email.ru','0720009008')
+INSERT INTO adoptanti VALUES (6, '2789534621969', 'Constantinescu', 'Adina', NULL, 'adinaconst@gmail.com', '0757503519')
+INSERT INTO adoptanti VALUES (7, '2372986514214', 'Coles', 'Andrei', 'Strada Mihai Viteazu nr 1 Chisinau', 'coles_andrei@gmail.com', '0720598264')
+INSERT INTO adoptanti VALUES (8, '2613987254723', 'Popescu', 'Marius', 'Strada Vasile Alecsandri nr 10 Chisinau', 'popescumarius@yahoo.com', '0741112113')
+INSERT INTO adoptanti VALUES (9, '2874129536931', 'Salavastru', 'Ovidiu', 'Strada Mihail Sadoveanu nr 75 Chisinau', 'sovidiu@gmail.com', '0750700213')
+INSERT INTO adoptanti VALUES (10, '2271685439412', 'Onuta', 'Ramona', 'Strada Alecu Donici nr 80 Chisinau', 'onutar@gmail.com', '0750999873')
+INSERT INTO adoptanti VALUES (11, '2928415673175', 'Damian', 'Natalia', 'Strada Vasile Alecsandri nr 65 Orhei', 'natalia_damian@gmail.com', '0729987654')
+INSERT INTO adoptanti VALUES (12, '2254376819994', 'Dragota', 'Corina', 'Strada Timisorenilor nr 47 Chisinau', 'dragotacorina@gmail.com', '0743933277')
+INSERT INTO adoptanti VALUES (13, '2289613574783', 'Serbu', 'Ionut', 'Strada Alecu Donici nr 40 Chisinau', 'serbui@yahoo.com','0765876665')
+INSERT INTO adoptanti VALUES (14, '2354712986654', 'Coles', 'Andrei', 'Strada Mihail Sadoveanu nr 1 Chisinau', 'coles_andrei@gmail.com', '0720598264')
+INSERT INTO adoptanti VALUES (15, '2497832561937', 'Stoica', 'Marian', 'Strada Voluntarilor nr 45 Orhei','stoicam@email.ru','0765872234')
+INSERT INTO adoptanti VALUES (16, '2419237685371', 'Birsan', 'Alexandru',NULL, 'alex.birsan@yahoo.com', '0765432190')
+
+
+INSERT INTO veterinar VALUES(1, '2261789354669', 'Abusan', 'Alexandru', NULL,'abusanandrei@email.ru','0765654391')
+INSERT INTO veterinar VALUES(2, '2769258143239', 'Borcea', 'Cristian', 'Strada Vasile Alecsandri nr 12 Chisinau', 'borcea_cris@gmail.com','0762652000')
+INSERT INTO veterinar VALUES(3, '2964817325449', 'Cristea', 'Andrei', 'Strada Voluntarilor nr 2 Chisinau', 'cristea_andrei@gmail.com' ,'0726700901')
+INSERT INTO veterinar VALUES(4, '2182974635248', 'Paraschiv', 'Remus', 'Strada Stefan cel Mare nr 28 Chisinau', 'remus_paraschiv@email.ru','0720120891')
+INSERT INTO veterinar VALUES(5, '2231796584572', 'Cercel', 'Mihaela', 'Strada Paris nr 49 Chisinau', 'cercel_miha@gmail.com','0732671205')
+INSERT INTO veterinar VALUES(6, '2391864527215', 'Pop', 'Robert', NULL, 'pop_robert@email.ru', '0739871520')
+INSERT INTO veterinar VALUES(7, '2432179586619', 'Moraru', 'Iulian', 'Strada Ciprian Porumbescu nr 47 Chisinau', 'abusanandrei@gmail.com','0757601832')
+INSERT INTO veterinar VALUES(8, '2479258163341', 'Pencea', 'Radu', 'Strada Mihai Viteazu nr 90 Chisinau', 'pencea_adu@yahoo.com','0751042050')
+INSERT INTO veterinar VALUES(9, '2378159264789', 'Negru', 'Irina', NULL, 'irina.negru@yahoo.com','0730496238')
+INSERT INTO veterinar VALUES(10, '2714523968647', 'Ignat', 'Madalina', 'Strada Mihai Eminescu nr 22 Chisinau', 'mada.ignat@yahoo.com','0721376199')
+
+
+INSERT INTO hrana VALUES (1, 'granulata', 20.5, 'Granulli') 
+INSERT INTO hrana VALUES (2, 'lichida', 30.5, 'Healthy-Pet') 
+INSERT INTO hrana VALUES (3, 'congelata', 40.5, 'Healthy-Pet') 
+INSERT INTO hrana VALUES (4, 'cu multivitamine', 100.5, 'Forzza') 
+INSERT INTO hrana VALUES (5, 'solida', 30.5, 'Healthy-Pet') 
+INSERT INTO hrana VALUES (6, 'uscata', 50.5, 'Your-Pet') 
+INSERT INTO hrana VALUES (7, 'conservata', 80.5, 'Healthy-Pet') 
+INSERT INTO hrana VALUES (8, 'gatita', 20.5, 'Your-Pet') 
+INSERT INTO hrana VALUES (9, 'bio', 30.5, 'Forzza') 
+INSERT INTO hrana VALUES (10, 'seminte', 30.5, 'Granulli')
+
+
+INSERT INTO animale VALUES (1, 'caine', 5.6, 'masculin','2022-02-22', 11, NULL, 8)
+INSERT INTO animale VALUES (2, 'pisica', 2.3, 'feminin','2021-12-25',  11, NULL, 7)
+INSERT INTO animale VALUES (3, 'caine', 9.2, 'masculin','2020-09-06', 2, 15, 5)
+INSERT INTO animale VALUES (4, 'papagal', 0.5, 'feminin','2020-05-26', 4, NULL, 10)
+INSERT INTO animale VALUES (5, 'hamster', 0.6, 'masculin','2022-04-01', 11, NULL, 9)
+INSERT INTO animale VALUES (6, 'papagal', 0.4, 'masculin','2022-04-21', 15, NULL, 8)
+INSERT INTO animale VALUES (7, 'caine', 4.5, 'feminin','2020-11-10', 1 , 2, 3)
+INSERT INTO animale VALUES (8, 'pisica', 3.6, 'masculin','2022-03-22', 3 , 15, 1)
+INSERT INTO animale VALUES (9, 'broasca-testoasa', 1.6, 'feminin','2021-07-28', 5 , 9, 2)
+INSERT INTO animale VALUES (11, 'hamster', 0.4, 'feminin', NULL, 7, 4, 6)
+INSERT INTO animale VALUES (12, 'veverita', 2.2, 'masculin', NULL, 13, 11, 5)
+INSERT INTO animale VALUES (13, 'caine', 7.6, 'feminin', '2021-03-22 ', 6, 5, 4)
+INSERT INTO animale VALUES (14, 'sarpe', 1.6, 'masculin', '2021-03-22', 8, 1, 5)
+INSERT INTO animale VALUES (15, 'veverita', 1.6, 'feminin', '2020-03-22', 15, 7, 5)
+INSERT INTO animale VALUES (16, 'caine', 8.6, 'masculin', '2020-03-22', 11, 2, 4)
+INSERT INTO animale VALUES (17, 'broasca-testoasa', 1.3, 'feminin', NULL, 10, 3, 2)
+INSERT INTO animale VALUES (18, 'sarpe', 1.1, 'feminin', '2021-03-22', 9, 6, 7)
+INSERT INTO animale VALUES (19, 'pisica', 10.1, 'masculin', '2022-03-22', 14, 8, 7)
+INSERT INTO animale VALUES (20, 'papagal', 0.3, 'feminin', '2021-03-22', 5, 12, 10)
+INSERT INTO animale VALUES (21, 'papagal', 0.7, 'masculin', '2019-03-22', 5, 10, 10)
+INSERT INTO animale VALUES (22, 'hamster', 0.25, 'masculin', '2019-03-22', 8, 12, 1)
+INSERT INTO animale VALUES (23, 'sarpe', 1.12, 'feminin', '2020-03-22', 1, 13, 2)
+INSERT INTO animale VALUES (24, 'pisica', 6.6, 'feminin', '2021-03-22', 1, 6, 1)
+
+INSERT INTO consultatii VALUES (1,'2022-11-15' ,'leziune', 2, 7)
+INSERT INTO consultatii VALUES (2,'2022-10-14' ,'plaga deschisa', 3, 4)
+INSERT INTO consultatii VALUES (3,'2022-11-01' ,'raie', 11, 7)
+INSERT INTO consultatii VALUES (4,'2022-09-19' ,'leziune la aripa dreapta', 6, 7)
+INSERT INTO consultatii VALUES (5,'2022-12-29' ,'arsura', 22, 4)
+INSERT INTO consultatii VALUES (6, '2022-09-05' ,'intoxicatie', 2, 1)
+INSERT INTO consultatii VALUES (7, '2022-08-27' ,'indigestie', 3, 7)
+INSERT INTO consultatii VALUES (8, '2022-09-20' ,'probleme cu vederea', 8, 10)
+INSERT INTO consultatii VALUES (9, '2022-08-08' ,'leziune la aripa stanga', 6, 2)
+INSERT INTO consultatii VALUES (10, '2022-11-29' ,'arsura', 16, 4)

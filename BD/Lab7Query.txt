@@ -1,0 +1,256 @@
+6.Afişati numele şi prenumele primilor 5 studenţi, care au obtinut note în ordine descrescătoare la al doilea test de la disciplina Baze de date. Să se folosească optiunea TOP...WITH TIES.
+
+SELECT TOP 5 WITH TIES s.Nume_Student, s.Prenume_Student
+FROM Studenti s
+JOIN studenti_reusita r ON s.Id_Student = r.Id_Student
+WHERE r.Id_Disciplina = 107
+ORDER BY r.Nota DESC;
+
+
+7.În ce grupă (Cod_Grupa) invată studentii care locuiesc pe strada 31 August?
+
+SELECT DISTINCT Id_Grupa, Nume_Student, Prenume_Student, Adresa_Postala_Student
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+WHERE Adresa_Postala_Student = 'strada 31 August';
+
+
+8.Obtineti identificatorii şi numele studenţilor, ale examenelor susţinute în anul 2018.
+
+SELECT DISTINCT s.Nume_Student, s.Prenume_Student, sr.Data_Evaluare, sr.Tip_Evaluare, d.Disciplina
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+WHERE sr.Data_Evaluare LIKE '2018%' and sr.Tip_Evaluare = 'Examen'
+
+9.Găsiţi numele, adresa studenţilor şi codul disciplinei la care studenţii au avut cel putin o notă mai mare decât 8 în 2018.
+SELECT DISTINCT s.Nume_Student, s.Prenume_Student, s.Adresa_Postala_Student, sr.Id_Disciplina
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+WHERE sr.Nota > 8 AND YEAR(sr.Data_Evaluare) = 2018;
+
+
+10.Găsiţi studenţii (numele, prenumele), care au obţinut la disciplina Baze de date (examen), în anul 2018, vreo notă mai mică de 8 şi mai mare ca 4.
+SELECT DISTINCT s.Nume_Student, s.Prenume_Student, sr.Nota
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+WHERE d.Disciplina = 'Baze de date'
+  AND sr.Tip_Evaluare = 'Examen'
+  AND sr.Nota > 4 AND sr.Nota < 8
+  AND YEAR(sr.Data_Evaluare) = 2018;
+
+
+11.Furnizati numele şi prenumele profesorilor, care au predat disciplina Baze de date, in 2018, şi au evaluat vreun student cu notă nesatisfăcătoare la reuşita curentă.
+SELECT DISTINCT p.Nume_Profesor, p.Prenume_Profesor
+FROM profesori p
+JOIN studenti_reusita sr ON p.Id_Profesor = sr.Id_Profesor
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+WHERE d.Disciplina = 'Baze de date'
+  AND sr.Nota < 5
+  AND YEAR(sr.Data_Evaluare) = 2018;
+
+
+12.Furnizati, în evidenta academică (reuşita) a studentilor cu prenumele Alex, următoarele date: numele, prenumele, denumirea disciplinei, notele (inclusiv la probele intermediare) şi anul la c-are au sustinut.
+SELECT s.Nume_Student, s.Prenume_Student, d.Disciplina, sr.Nota, sr.Tip_Evaluare, YEAR(sr.Data_Evaluare) AS Anul_Sustinere
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+WHERE s.Prenume_Student = 'Alex';
+
+
+
+
+13.Afiati cursurile urmate de către studentul Florea loan.
+SELECT DISTINCT d.Disciplina, d.Nr_ore_plan_disciplina
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+WHERE s.Nume_Student = 'Florea' AND s.Prenume_Student = 'Ioan';
+
+14.Afiati numele şi prenumele studentilor, precum şi cursurile promovate cu note mai mari de 8 la examen.
+SELECT s.Nume_Student, s.Prenume_Student, d.Disciplina, sr.Nota
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+WHERE sr.Tip_Evaluare = 'Examen' AND sr.Nota > 8;
+
+15.Găsiti numele şi prenumele studentilor, care au sustinut examen atăt la profesorul lon, căt şi la profesorul Gheorge In anul 2017 (folositi pentru nume clauza LIKE)
+SELECT DISTINCT s.Nume_Student, s.Prenume_Student
+FROM studenti s
+JOIN studenti_reusita sr1 ON s.Id_Student = sr1.Id_Student
+JOIN profesori p1 ON sr1.Id_Profesor = p1.Id_Profesor
+JOIN profesori p2 ON sr1.Id_Profesor = p2.Id_Profesor
+WHERE (p1.Prenume_Profesor LIKE 'Ion' AND p2.Prenume_Profesor LIKE 'Gheorghe')
+  AND YEAR(sr1.Data_Evaluare) = 2017 AND sr1.Tip_Evaluare = 'Examen'
+  AND YEAR(sr1.Data_Evaluare) = 2017 AND sr1.Tip_Evaluare = 'Examen';
+
+16.Fumizati numele şi prenumele studentilor, care au studiat disdpline cu un volum de lectii mai mic de 60 de ore, precum şi profesorii (identificatorii) respectivi, care le-au predat.
+SELECT DISTINCT s.Nume_Student, s.Prenume_Student, p.Id_Profesor
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+JOIN profesori p ON sr.Id_Profesor = p.Id_Profesor
+WHERE d.Nr_ore_plan_disciplina < 60;
+
+17.Afişati numele şi pronumele profesorilor, care au predat cel putin o disciplină studentului cu identificatorul 100.
+SELECT DISTINCT p.Nume_Profesor, p.Prenume_Profesor
+FROM profesori p
+JOIN studenti_reusita sr ON p.Id_Profesor = sr.Id_Profesor
+WHERE sr.Id_Student = 100;
+
+18.Afişati numele şi prenumele profesorilor, care au predat doar discipline cu o incărcare orară mai mică de 60 de ore.
+SELECT DISTINCT p.Nume_Profesor, p.Prenume_Profesor
+FROM profesori p
+JOIN studenti_reusita sr ON p.Id_Profesor = sr.Id_Disciplina
+JOIN discipline d ON d.Id_Disciplina = sr.Id_Disciplina
+WHERE d.Nr_ore_plan_disciplina < 60
+
+
+19.Găsiti numele şi prenumele profesorilor, care au predat discipline, 1n care studentul "Cosovanu" a fost respins (nota <5) la cel putin o probă.
+SELECT DISTINCT p.Nume_Profesor, p.Prenume_Profesor
+FROM profesori p
+JOIN studenti_reusita sr ON p.Id_Profesor = sr.Id_Profesor
+JOIN studenti s ON sr.Id_Student = s.Id_Student
+WHERE s.Nume_Student = 'Cosovanu' AND sr.Nota < 5;
+
+
+20.Afişati numărul de studenti care au sustinut testul (Testul 2) la disciplina Baze de date în 2018.
+SELECT COUNT(DISTINCT sr.Id_Student) AS Numar_Studenti
+FROM studenti_reusita sr
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+WHERE d.Disciplina = 'Baze de date' AND sr.Tip_Evaluare = 'Testul 2' AND YEAR(sr.Data_Evaluare) = 2018 AND sr.Nota > 4;
+
+
+21.Câte note are fiecare student? Fumizati numele şi prenumele lor.
+SELECT s.Nume_Student, s.Prenume_Student, COUNT(sr.Nota) AS Numar_Note
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+GROUP BY s.Nume_Student, s.Prenume_Student;
+
+
+22.Să se obtină numărul de discipline predate de fiecare profesor (Nume_Profesor, Prenume_Profesor).
+SELECT p.Nume_Profesor, p.Prenume_Profesor, COUNT(distinct d.Id_Disciplina) as Numar_Discipline
+FROM profesori p
+JOIN studenti_reusita sr ON p.Id_Profesor = sr.Id_Profesor
+JOIN discipline d ON d.Id_Disciplina = sr.Id_Disciplina
+GROUP BY p.Nume_Profesor, p.Prenume_Profesor;
+
+
+23.Să se obtină lista disciplinelor (Disciplina) sustinute de studenti cu nota medie de promovare la examen mai mare de 7, în ordine descrescătoare după denumirea disciplinei.
+SELECT DISTINCT d.Disciplina
+FROM discipline d
+JOIN studenti_reusita sr ON d.Id_Disciplina = sr.Id_Disciplina
+WHERE sr.Tip_Evaluare = 'Examen' AND sr.Nota > 7
+ORDER BY d.Disciplina DESC;
+
+24.Să se afişase lista disciplinelor (Disciplina) predate de cel putin doi profesori.
+SELECT d.Disciplina
+FROM discipline d
+JOIN studenti_reusita sr ON d.Id_Disciplina = sr.Id_Disciplina
+GROUP BY d.Disciplina
+HAVING COUNT(DISTINCT sr.Id_Profesor) >= 2;
+
+25.In ce grupe de studii (Cod_Grupa) figurează mai mult de 24 de studenti?
+SELECT g.Cod_Grupa
+FROM grupe g
+JOIN studenti_reusita sr ON sr.Id_Grupa = g.Id_Grupa
+GROUP BY g.Cod_Grupa
+HAVING COUNT(sr.Id_Student) > 24;
+
+26.Găsiti numele, prenumele şi adresele studentilor şi ale profesorilor care locuiesc pe strada 31 August.
+SELECT Nume_Student, Prenume_Student, Adresa_Postala_Student AS Adresa
+FROM studenti
+WHERE Adresa_Postala_Student LIKE '31 August%'
+
+UNION
+
+SELECT Nume_Profesor, Prenume_Profesor, Adresa_Postala_Profesor AS Adresa
+FROM profesori
+WHERE Adresa_Postala_Profesor LIKE '31 August%';
+
+27.Afişati studentii (identificatorii) care au sustinut (evaluare examen) la toate disciplinele predate de prof. Ion.
+SELECT DISTINCT s.Nume_Student, s.Prenume_Student, sr.Id_Disciplina, (p.Nume_Profesor + ' ' + p.Prenume_Profesor) as Profesor
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+JOIN profesori p ON sr.Id_Profesor = p.Id_Profesor
+WHERE sr.Tip_Evaluare = 'Examen' AND sr.Nota > 4 AND p.Prenume_Profesor = 'Ion';
+
+28.Găsiti numele, prenumele şi media grupei studentilor care au sustinut toate disciplinele predate de profesorii ce locuiesc pe strada 31 August.
+SELECT DISTINCT s.Nume_Student, s.Prenume_Student, g.Cod_Grupa, AVG(sr.Nota) as Medie_Grupa
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+JOIN profesori p ON sr.Id_Profesor = p.Id_Profesor
+JOIN grupe g ON sr.Id_Grupa = g.Id_Grupa
+WHERE p.Adresa_Postala_Profesor LIKE '31 August%'
+GROUP BY s.Nume_Student, s.Prenume_Student, g.Cod_Grupa;
+
+29.Determinati numele şi prenumele studentilor, care au sustinut examene cu o notă mai mică decăt oricare dintre notele studentilor cu identificatorul 100.
+SELECT DISTINCT s.Nume_Student, s.Prenume_Student
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+WHERE sr.Tip_Evaluare = 'Examen'
+  AND sr.Nota < ANY (
+    SELECT sr2.Nota
+    FROM studenti_reusita sr2
+    WHERE sr2.Id_Student = 100
+      AND sr2.Tip_Evaluare = 'Examen'
+);
+
+30.Căti studenti au studiat, deja, disciplina Baze de date în 2018 şi 2019 şi care este media lor la reuşita curentă?
+SELECT COUNT(DISTINCT s.Id_Student) AS Numar_Studenti, AVG(sr.Nota) AS Medie_Reusita
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+WHERE d.Disciplina = 'Baze de date'
+  AND YEAR(sr.Data_Evaluare) IN (2018, 2019);
+
+31.Furnizali numele şi prenumele studentilor, care au avut mai mult de două dezaprobări Intr-un an la o disciplină.
+
+32.Furnizali numele, prenumele şi media notelor pe grupe pentru studenti.
+SELECT g.Cod_Grupa, s.Nume_Student, s.Prenume_Student, AVG(sr.Nota) AS Medie_Grupa
+FROM studenti s
+JOIN studenti_reusita sr ON s.Id_Student = sr.Id_Student
+JOIN grupe g ON sr.Id_Grupa = g.Id_Grupa
+GROUP BY g.Cod_Grupa, s.Nume_Student, s.Prenume_Student;
+
+
+
+33.Găsili numele şi prenumele studentilor, care nu au luat notă de promovare la reuşita curentă la nicio disciplină.
+SELECT DISTINCT s.Nume_Student, s.Prenume_Student
+FROM studenti s
+WHERE s.Id_Student NOT IN (
+    SELECT DISTINCT sr.Id_Student
+    FROM studenti_reusita sr
+    WHERE sr.Tip_Evaluare = 'Examen' AND sr.Nota >= 5
+);
+
+34.Găsiti numele şi prenumele studenlilor, care nu au luat note de promovare (inclusiv note intermediare) la nicio disciplină.
+SELECT DISTINCT s.Nume_Student, s.Prenume_Student
+FROM studenti s
+WHERE s.Id_Student NOT IN (
+    SELECT DISTINCT sr.Id_Student
+    FROM studenti_reusita sr
+    WHERE sr.Nota >= 5
+);
+
+35.Găsiti denumirile disciplinelor şi media notelor pe disciplină. Afişati numai disciplinele cu medii mai mari de 7.0.
+SELECT d.Disciplina, AVG(sr.Nota) AS Medie_Disciplina
+FROM discipline d
+JOIN studenti_reusita sr ON d.Id_Disciplina = sr.Id_Disciplina
+GROUP BY d.Disciplina
+HAVING AVG(sr.Nota) > 7.0;
+
+36.Găsiti numele, prenumele şi adresele studentilor şi ale profesorilor care locuiesc intr-o localitate. Să se afişeze denumirea localitătii şi numărul de locuitori incluşi in cele două categorii. Datele se afişează in ordinea crescătoare a numărului membrilor din categoria menlionată anterior.
+
+37.Găsiti disciplina sustinută de studenti cu nota medie (la examen) cea mai Inaltă.
+SELECT TOP 1 d.Disciplina, AVG(sr.Nota) AS Medie_Examen
+FROM studenti_reusita sr
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+WHERE sr.Tip_Evaluare = 'Examen'
+GROUP BY d.Disciplina
+ORDER BY Medie_Examen DESC;
+
+38.Furnizati denumirile disciplinelor cu o medie mai mică decât media notelor de la disdplina Baze de date.
+39.Găsiti denumirile disciplinelor la care nu au sustinut examenul, medie, peste 5% de studenu.

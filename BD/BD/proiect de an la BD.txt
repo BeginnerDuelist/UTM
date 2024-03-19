@@ -1,0 +1,6 @@
+capitolul 1
+analiza si identificarea solutiilor de gestionare a bazai de date 
+capitolul 2 
+proiectare baza de date 
+capitolul 3
+integrarea si utilizarea bazei de date 

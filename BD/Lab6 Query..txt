@@ -1,0 +1,14 @@
+Sarcina 1: SELECT * FROM grupe;
+Sarcina 2: SELECT * FROM discipline ORDER BY Nr_ore_plan_disciplina DESC;
+Sarcina 3: 
+SELECT DISTINCT p.Nume_Profesor, p.Prenume_Profesor, d.Disciplina
+FROM studenti_reusita sr
+
+JOIN profesori p ON sr.Id_Profesor = p.Id_Profesor
+JOIN discipline d ON sr.Id_Disciplina = d.Id_Disciplina
+
+ORDER BY p.Nume_Profesor DESC, p.Prenume_Profesor DESC, d.Disciplina DESC;
+
+Sarcina 4: SELECT * FROM discipline WHERE LEN(Disciplina) > 20;
+Sarcina 5: SELECT * FROM studenti WHERE Nume_Student LIKE '%u';
+

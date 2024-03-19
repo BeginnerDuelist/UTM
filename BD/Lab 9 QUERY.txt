@@ -1,0 +1,26 @@
+/* Subinterogari necorelate */
+SELECT Nume_Student, Prenume_Student
+FROM studenti WHERE Id_Student IN (
+  SELECT Id_Student  FROM studenti
+  WHERE Adresa_Postala_Student LIKE '%mun. Chisinau, str. Tighina, 23/3%');
+/* Subinterogari corelate */
+SELECT Specialitate, Cod_Grupa FROM grupe
+WHERE Id_Grupa = (  SELECT Id_Grupa
+  FROM grupe  WHERE Cod_Grupa = 'CIB171'
+);
+/* Operatori de comparatie */
+SELECT Nume_Profesor, Prenume_Profesor FROM profesori
+WHERE Id_Profesor < (  SELECT MAX(Id_Profesor)
+  FROM profesori);
+/* Operatori IN, ALL, ANY, [NOT] EXISTS */
+SELECT Disciplina FROM discipline
+WHERE Nr_ore_plan_disciplina > ALL (  SELECT Nr_ore_plan_disciplina
+  FROM discipline  WHERE Disciplina LIKE '%CIB171%'
+);
+/* Subinterogari in clauza FROM */
+SELECT DISTINCT Nume_Student, Prenume_Student FROM (
+    SELECT studenti.Nume_Student, studenti.Prenume_Student
+    FROM studenti
+    JOIN studenti_reusita ON studenti_reusita.Id_Student = studenti.Id_Student
+	WHERE studenti_reusita.Id_Profesor=100
+) AS StudentiGrupe;

@@ -1,0 +1,11 @@
+SELECT
+  studenti.Nume_Student,
+  studenti.Prenume_Student,
+  studenti_reusita.Nota,
+  discipline.Disciplina
+FROM
+  studenti
+JOIN studenti_reusita ON studenti.Id_Student = studenti_reusita.Id_Student
+JOIN discipline ON discipline.Id_Disciplina = studenti_reusita.Id_Disciplina
+WHERE
+  studenti_reusita.Tip_Evaluare = 'Reusita curenta';
