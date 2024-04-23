@@ -1,4 +1,4 @@
-1. Trebuie sa aveti instalat .net sdk la dvs pe laptop.
+1. Trebuie sa aveti instalat .net sdk la dvs pe laptop. Trebuie la proiect sa instalati pachetul swashbuckle.ASPnetCore.
 2. Deschideti proiectul sil porniti . Daca aveti Visual studio apasati Start without DEbuuging . Daca aveti visual studio Code tastati pe rand comeniziile in terminal dotent build dotnet run.
 3. Aplicatia se va porni pe portul https://localhost:7051/swagger/index.html
 4. Aplicatia este facut in ASP.NET CORE Web Api la deschidere trebuie sa va apara endpointurile.
